@@ -150,42 +150,42 @@ NOKIA & WIPRO ACHIEVEMENTS:
         {/* Standard POSIX Command Chips */}
         <div style={{ display: "flex", gap: "6px", "flex-wrap": "wrap" }}>
           <button
-            class="switcher-btn"
+            class="terminal-chip"
             onClick={() => executeCommand("whoami")}
             style={{ "font-size": "0.7rem", padding: "2px 8px" }}
           >
             whoami
           </button>
           <button
-            class="switcher-btn"
+            class="terminal-chip"
             onClick={() => executeCommand("ls -la")}
             style={{ "font-size": "0.7rem", padding: "2px 8px" }}
           >
             ls -la
           </button>
           <button
-            class="switcher-btn"
+            class="terminal-chip"
             onClick={() => executeCommand("cat bio.txt")}
             style={{ "font-size": "0.7rem", padding: "2px 8px" }}
           >
             bio.txt
           </button>
           <button
-            class="switcher-btn"
+            class="terminal-chip"
             onClick={() => executeCommand("cat achievements.log")}
             style={{ "font-size": "0.7rem", padding: "2px 8px" }}
           >
             achievements.log
           </button>
           <button
-            class="switcher-btn"
+            class="terminal-chip"
             onClick={() => executeCommand("cat contact.txt")}
             style={{ "font-size": "0.7rem", padding: "2px 8px" }}
           >
             contact.txt
           </button>
           <button
-            class="switcher-btn"
+            class="terminal-chip"
             onClick={() => executeCommand("sh easter_egg.sh")}
             style={{ "font-size": "0.7rem", padding: "2px 8px", background: "rgba(34, 197, 94, 0.15)", color: "#4ade80", border: "1px solid rgba(34, 197, 94, 0.3)" }}
           >
@@ -219,6 +219,8 @@ NOKIA & WIPRO ACHIEVEMENTS:
             placeholder="Type 'help', 'whoami', 'ls -la', or 'cat experience.log'..."
             style={{
               flex: 1,
+              width: "100%",
+              "min-width": "0",
               background: "transparent",
               border: "none",
               outline: "none",

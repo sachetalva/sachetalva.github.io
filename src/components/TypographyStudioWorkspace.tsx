@@ -54,7 +54,7 @@ export function TypographyStudioWorkspace() {
             {resumeData.summary}
           </p>
 
-          <div class="hero-metrics-grid" style={{ "margin-top": "0.5rem", "grid-template-columns": "repeat(4, 1fr)" }}>
+          <div class="hero-metrics-grid" style={{ "margin-top": "0.5rem" }}>
             <div class="metric-pill" data-testid="stat-years">
               <div class="metric-value">16+ Yrs</div>
               <div class="metric-label">Software Engineering</div>
@@ -109,7 +109,7 @@ export function TypographyStudioWorkspace() {
         </div>
 
         {/* Redesigned Career Timeline Scrubber */}
-        <div style={{
+        <div class="timeline-desktop-scrubber" style={{
           position: "relative",
           width: "100%",
           height: "260px",
@@ -246,6 +246,39 @@ export function TypographyStudioWorkspace() {
           </For>
         </div>
 
+        {/* Mobile-Friendly Vertical Timeline Scrubber */}
+        <div class="mobile-timeline-scrubber">
+          <div class="vertical-timeline-line" />
+          <For each={chronologicalExperience()}>
+            {(exp) => {
+              const isActive = () => activeRoleIndex() === exp.originalIndex;
+              const startDate = exp.duration.split(" – ")[0];
+              const simplifiedRole = formatTimelineRole(exp.role);
+              const simplifiedCompany = exp.company
+                .replace("Amazon Web Services (AWS)", "AWS")
+                .replace("Wipro Technologies", "Wipro")
+                .replace("Nokia Networks", "Nokia")
+                .replace("Alcatel Lucent", "Alcatel");
+              
+              return (
+                <button
+                  onClick={() => setActiveRoleIndex(exp.originalIndex)}
+                  class={`mobile-timeline-node ${isActive() ? "active" : ""}`}
+                  data-testid={`mobile-timeline-node-${exp.company.toLowerCase()}-${exp.originalIndex}`}
+                >
+                  <div class="mobile-timeline-dot" />
+                  <div class="mobile-timeline-info">
+                    <span class="mobile-timeline-date">{exp.duration}</span>
+                    <span class="mobile-timeline-company-role">
+                      <strong>{simplifiedCompany}</strong> — {simplifiedRole}
+                    </span>
+                  </div>
+                </button>
+              );
+            }}
+          </For>
+        </div>
+
         {/* Active Role Card */}
         <div style={{ background: "#f8fafc", padding: "2rem", "border-radius": "8px", border: "1px solid #cbd5e1" }}>
           <div style={{ display: "flex", "justify-content": "space-between", "align-items": "flex-start", "flex-wrap": "wrap", gap: "1rem" }}>
@@ -315,7 +348,7 @@ export function TypographyStudioWorkspace() {
           </button>
         </div>
 
-        <div style={{ display: "grid", "grid-template-columns": "repeat(auto-fit, minmax(320px, 1fr))", gap: "1.5rem" }}>
+        <div class="projects-grid">
           <For each={filteredProjects()}>
             {(project) => (
               <div

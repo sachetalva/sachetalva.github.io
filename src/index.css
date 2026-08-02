@@ -1645,3 +1645,252 @@ button {
     margin-bottom: 1rem !important;
   }
 }
+
+/* ==========================================================================
+   Mobile-Friendly Responsive Styling
+   ========================================================================== */
+
+/* Global Container Styling */
+.container {
+  width: 100%;
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Terminal Suggestions Chip Styling */
+.terminal-chip {
+  font-family: monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 4px 8px;
+  background: #334155;
+  color: #cbd5e1;
+  border: 1px solid #475569;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.terminal-chip:hover {
+  background: #475569;
+  color: #ffffff;
+  border-color: #0284c7;
+}
+
+/* Mobile Menu Toggle Button styling */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  z-index: 201;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mobile Timeline Elements (Hidden on Desktop) */
+.mobile-timeline-scrubber {
+  display: none;
+}
+
+/* Projects Grid Desktop Defaults */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+  .header-inner {
+    padding: 0 1.5rem;
+  }
+  
+  .nav {
+    display: none !important;
+  }
+  
+  .controls-group {
+    display: none !important;
+  }
+  
+  .mobile-menu-toggle {
+    display: flex !important;
+  }
+  
+  .mobile-menu-overlay {
+    position: fixed;
+    top: 4.5rem;
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - 4.5rem);
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    z-index: 199;
+    border-bottom: 1px solid var(--glass-border);
+    animation: slideDown 0.3s ease forwards;
+    overflow-y: auto;
+  }
+  
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2.5rem 1.5rem;
+    gap: 1.5rem;
+  }
+  
+  .mobile-nav-link {
+    font-family: monospace;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px dashed var(--border-color);
+  }
+  
+  .mobile-nav-link:last-of-type {
+    border-bottom: none;
+  }
+  
+  .mobile-nav-link:hover {
+    color: var(--color-accent);
+  }
+  
+  .mobile-view-switcher {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .neumorphic-dial-widget {
+    display: none !important;
+  }
+  
+  .timeline-desktop-scrubber {
+    display: none !important;
+  }
+  
+  .mobile-timeline-scrubber {
+    display: flex !important;
+    flex-direction: column;
+    position: relative;
+    padding-left: 2rem;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .vertical-timeline-line {
+    position: absolute;
+    left: 7px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: var(--border-dark);
+  }
+  
+  .mobile-timeline-node {
+    display: flex;
+    align-items: flex-start;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    position: relative;
+    width: 100%;
+  }
+  
+  .mobile-timeline-dot {
+    position: absolute;
+    left: -2rem;
+    top: 4px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--bg-secondary);
+    border: 3px solid var(--border-dark);
+    transition: all 0.3s ease;
+    transform: translateX(1px);
+  }
+  
+  .mobile-timeline-node.active .mobile-timeline-dot {
+    border-color: var(--color-accent);
+    background: var(--color-accent);
+    box-shadow: 0 0 8px rgba(2, 132, 199, 0.5);
+  }
+  
+  .mobile-timeline-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .mobile-timeline-date {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    font-family: monospace;
+  }
+  
+  .mobile-timeline-node.active .mobile-timeline-date {
+    color: var(--color-accent);
+  }
+  
+  .mobile-timeline-company-role {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+  }
+  
+  .mobile-timeline-node.active .mobile-timeline-company-role {
+    color: var(--color-accent);
+  }
+  
+  .projects-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .swiss-panel {
+    padding: 1.5rem !important;
+  }
+  
+  .hero-metrics-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-metrics-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .swiss-panel {
+    padding: 1.25rem !important;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+

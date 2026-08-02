@@ -15,7 +15,7 @@ export const Skills = (props: SkillsProps) => {
         <div class="paper-cell skills-cell" id="skills">
           <h2 class="cell-title">Skills & Expertise</h2>
           
-          <div class="skills-grid" id="skills-container" style={{ display: "grid", "grid-template-columns": "repeat(2, 1fr)", gap: "2rem" }}>
+          <div class="skills-grid" id="skills-container" style={{ display: "grid", gap: "2rem" }}>
             <For each={resumeData.skills}>
               {(group) => (
                 <div class="skills-category">
