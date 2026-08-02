@@ -252,7 +252,6 @@ export function TypographyStudioWorkspace() {
           <For each={chronologicalExperience()}>
             {(exp) => {
               const isActive = () => activeRoleIndex() === exp.originalIndex;
-              const startDate = exp.duration.split(" – ")[0];
               const simplifiedRole = formatTimelineRole(exp.role);
               const simplifiedCompany = exp.company
                 .replace("Amazon Web Services (AWS)", "AWS")
