@@ -30,18 +30,12 @@ drwxr-xr-x  sachet  staff  4096 Aug 02 15:20 ..
     "Java",
     "Golang",
     "Python",
-    "C / C++",
-    "C#",
-    "REST",
-    "RADIUS"
+    "C / C++"
   ],
   "databases_and_tools": [
     "PostgreSQL",
-    "SQLite",
-    "MS SQL Server",
-    "Git",
-    "SVN",
-    "GTest Framework"
+    "DynamoDB",
+    "OpenSearch"
   ]
 }`;else if(n===`cat achievements.log`||n===`cat achievements`)i=`AWS SDM ACHIEVEMENTS:
 - Scaled and led a team of 12+ SDEs and 2 interns across 4 service charters.
