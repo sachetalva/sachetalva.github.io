@@ -116,15 +116,39 @@ export const Projects = () => {
                 </div>
               </div>
 
-              <Show when={proj().links?.github || proj().links?.live}>
-                <div class="project-links" style={{ "margin-top": "2rem", "border-top": "1px solid var(--border-color)", "padding-top": "1.25rem" }}>
+              <Show when={proj().links?.github || proj().links?.live || proj().links?.blog || proj().links?.video}>
+                <div class="project-links" style={{ "margin-top": "2rem", "border-top": "1px solid var(--border-color)", "padding-top": "1.25rem", display: "flex", gap: "0.75rem", "flex-wrap": "wrap" }}>
+                  <Show when={proj().links?.blog}>
+                    <a
+                      href={proj().links?.blog}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="btn btn-secondary"
+                      style={{ padding: "0.45rem 1rem", "font-size": "0.8rem", display: "inline-flex", "align-items": "center", gap: "0.4rem" }}
+                    >
+                      AWS TLS 1.3 Blog <ExternalLink size={12} />
+                    </a>
+                  </Show>
+
+                  <Show when={proj().links?.video}>
+                    <a
+                      href={proj().links?.video}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="btn btn-secondary"
+                      style={{ padding: "0.45rem 1rem", "font-size": "0.8rem", display: "inline-flex", "align-items": "center", gap: "0.4rem" }}
+                    >
+                      OpenSearchCon Presentation <ExternalLink size={12} />
+                    </a>
+                  </Show>
+
                   <Show when={proj().links?.github}>
                     <a
                       href={proj().links?.github}
                       target="_blank"
                       rel="noopener noreferrer"
                       class="btn btn-secondary"
-                      style={{ padding: "0.45rem 1rem", "font-size": "0.8rem" }}
+                      style={{ padding: "0.45rem 1rem", "font-size": "0.8rem", display: "inline-flex", "align-items": "center", gap: "0.4rem" }}
                     >
                       Repository <ExternalLink size={12} />
                     </a>

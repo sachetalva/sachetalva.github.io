@@ -56,6 +56,10 @@ function App() {
                 <div class="header-nav-box">
                   <div class="header-contact-info">
                     <div class="contact-info-item">
+                      <span class="info-label">Email</span>
+                      <a href={`mailto:${resumeData.email}`} class="info-value">{resumeData.email}</a>
+                    </div>
+                    <div class="contact-info-item">
                       <span class="info-label">Location</span>
                       <span class="info-value">Bengaluru, Karnataka, India</span>
                     </div>
@@ -109,6 +113,10 @@ function App() {
                 </div>
                 <div class="header-nav-box">
                   <div class="header-contact-info">
+                    <div class="contact-info-item">
+                      <span class="info-label">Email</span>
+                      <a href={`mailto:${resumeData.email}`} class="info-value">{resumeData.email}</a>
+                    </div>
                     <div class="contact-info-item">
                       <span class="info-label">Location</span>
                       <span class="info-value">Bengaluru, Karnataka, India</span>

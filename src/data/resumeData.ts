@@ -1,10 +1,18 @@
+export interface Publication {
+  title: string;
+  type: "blog" | "talk";
+  venue: string;
+  description: string;
+  link: string;
+}
+
 export interface Project {
   title: string;
   category: "software" | "cloud" | "management";
   description: string;
   longDescription: string;
   tech: string[];
-  links?: { github?: string; live?: string };
+  links?: { github?: string; live?: string; blog?: string; video?: string };
 }
 
 export interface Experience {
@@ -32,6 +40,7 @@ export interface ResumeData {
   address: string;
   linkedin: string;
   github: string;
+  publications: Publication[];
   experience: Experience[];
   projects: Project[];
   skills: SkillGroup[];
@@ -41,11 +50,27 @@ export const resumeData: ResumeData = {
   name: "Sachet Alva",
   title: "Software Development Manager",
   summary: "Software Development Manager at Amazon Web Services (AWS) with 16 years of software engineering experience, including over 3 years in engineering leadership. Leads a team of 12+ SDEs overseeing security, encryption, plugin platforms, and networking services for a large-scale, managed search and analytics platform. Transitioned into management from a Senior Software Development Engineer (SDE) role, maintaining deep technical involvement in architectural decisions. Currently owns 4 service areas and 5 operational support groups, driving multiple concurrent feature launches across all AWS regions.",
-  email: "",
+  email: "sachetalva@gmail.com",
   phone: "",
   address: "Bengaluru, Karnataka, India",
   linkedin: "https://linkedin.com/in/sachetalva",
   github: "https://github.com/sachetalva",
+  publications: [
+    {
+      title: "Enhance security and performance with TLS 1.3 and Perfect Forward Secrecy on Amazon OpenSearch Service",
+      type: "blog",
+      venue: "AWS Big Data Blog",
+      description: "Published technical blog post introducing TLS 1.3 support for Amazon OpenSearch Service, demonstrating improved security posture and lower TLS handshake latency.",
+      link: "https://aws.amazon.com/blogs/big-data/enhance-security-and-performance-with-tls-1-3-and-perfect-forward-secrecy-on-amazon-opensearch-service/"
+    },
+    {
+      title: "OpenSearchCon Amsterdam Presentation",
+      type: "talk",
+      venue: "OpenSearchCon Amsterdam",
+      description: "Presented key technical innovations, platform security architectures, and plugin management for OpenSearch at OpenSearchCon Amsterdam.",
+      link: "https://www.youtube.com/watch?v=p2P__hsZMCo&t=13s"
+    }
+  ],
   experience: [
     {
       company: "Amazon Web Services (AWS)",
@@ -128,7 +153,10 @@ export const resumeData: ResumeData = {
       description: "Delivered the platform for custom, third-party, and optional plugins, alongside Encryption at Rest for OpenSearch Serverless across all AWS regions.",
       longDescription: "Delivered the platform for custom, third-party, and optional plugins, alongside Encryption at Rest for OpenSearch Serverless across all AWS global production regions, unblocking critical migration paths for legacy enterprise customers.",
       tech: ["AWS OpenSearch", "Encryption at Rest", "Plugin Platform", "Certificate Management"],
-      links: {}
+      links: {
+        blog: "https://aws.amazon.com/blogs/big-data/enhance-security-and-performance-with-tls-1-3-and-perfect-forward-secrecy-on-amazon-opensearch-service/",
+        video: "https://www.youtube.com/watch?v=p2P__hsZMCo&t=13s"
+      }
     },
     {
       title: "OpenSearch Serverless Security & Access Policies",

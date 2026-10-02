@@ -1,6 +1,7 @@
 import { createSignal, For, Show } from "solid-js";
 import { InteractiveTerminal } from "./InteractiveTerminal";
 import { resumeData } from "../data/resumeData";
+import { ExternalLink, Linkedin, Mail } from "./Icons";
 
 export function TypographyStudioWorkspace() {
   const [activeRoleIndex, setActiveRoleIndex] = createSignal<number>(0);
@@ -77,6 +78,9 @@ export function TypographyStudioWorkspace() {
             <button class="btn btn-primary" onClick={() => (window as any).downloadResume?.()} style={{ padding: "0.85rem 2.25rem", "font-size": "1rem" }}>
               Download Resume
             </button>
+            <a href={`mailto:${resumeData.email}`} class="btn btn-secondary" style={{ padding: "0.85rem 2.25rem", "font-size": "1rem", display: "inline-flex", "align-items": "center", gap: "0.5rem" }}>
+              <Mail size={18} /> {resumeData.email}
+            </a>
           </div>
         </div>
       </section>
@@ -316,12 +320,49 @@ export function TypographyStudioWorkspace() {
       </section>
 
       {/* ------------------------------------------------------------------
-          SECTION 04: PROJECTS
+          SECTION 04: PROJECTS & PUBLICATIONS
           ------------------------------------------------------------------ */}
       <section class="swiss-panel" id="projects" data-testid="scene-projects" style={{ margin: "0 auto 3.5rem auto", width: "100%" }}>
         <div style={{ "margin-bottom": "1.5rem" }}>
-          <span class="mono-tag" style={{ "margin-bottom": "0.75rem" }}>04 // PROJECTS</span>
-          <h2 class="section-main-heading">Projects</h2>
+          <span class="mono-tag" style={{ "margin-bottom": "0.75rem" }}>04 // PROJECTS & PUBLICATIONS</span>
+          <h2 class="section-main-heading">Projects & Published Works</h2>
+        </div>
+
+        {/* Featured Publications & Talks Highlight Banner */}
+        <div style={{ background: "linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%)", border: "1px solid #bae6fd", "border-radius": "10px", padding: "1.5rem", "margin-bottom": "2rem" }}>
+          <h3 style={{ "font-size": "1.1rem", "font-weight": "800", color: "#0369a1", "margin-bottom": "1rem", display: "flex", "align-items": "center", gap: "0.5rem" }}>
+            <span>📚 Featured Articles & Conference Presentations</span>
+          </h3>
+          <div style={{ display: "grid", "grid-template-columns": "repeat(auto-fit, minmax(300px, 1fr))", gap: "1rem" }}>
+            <For each={resumeData.publications}>
+              {(pub) => (
+                <div style={{ background: "#ffffff", padding: "1.25rem", "border-radius": "8px", border: "1px solid #cbd5e1", display: "flex", "flex-direction": "column", "justify-content": "space-between" }}>
+                  <div>
+                    <div style={{ display: "flex", "justify-content": "space-between", "align-items": "center", "margin-bottom": "0.5rem" }}>
+                      <span class="mono-tag" style={{ background: pub.type === "blog" ? "#e0f2fe" : "#fef3c7", color: pub.type === "blog" ? "#0369a1" : "#b45309", border: "none" }}>
+                        {pub.venue}
+                      </span>
+                    </div>
+                    <h4 style={{ "font-size": "0.95rem", "font-weight": "700", color: "#0f172a", "margin-bottom": "0.5rem", "line-height": "1.4" }}>
+                      {pub.title}
+                    </h4>
+                    <p style={{ "font-size": "0.83rem", color: "#475569", "margin-bottom": "1rem", "line-height": "1.5" }}>
+                      {pub.description}
+                    </p>
+                  </div>
+                  <a
+                    href={pub.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-secondary"
+                    style={{ "font-size": "0.8rem", padding: "0.4rem 0.8rem", display: "inline-flex", "align-items": "center", gap: "0.4rem", "width": "fit-content" }}
+                  >
+                    View {pub.type === "blog" ? "AWS Blog Post" : "Presentation"} <ExternalLink size={14} />
+                  </a>
+                </div>
+              )}
+            </For>
+          </div>
         </div>
 
         <div style={{ display: "flex", gap: "0.75rem", margin: "1rem 0 2rem 0", "flex-wrap": "wrap" }}>
@@ -367,11 +408,38 @@ export function TypographyStudioWorkspace() {
                   {project.description}
                 </p>
 
-                <div style={{ display: "flex", "flex-wrap": "wrap", gap: "0.5rem" }}>
+                <div style={{ display: "flex", "flex-wrap": "wrap", gap: "0.5rem", "margin-bottom": project.links?.blog || project.links?.video ? "1rem" : "0" }}>
                   <For each={project.tech}>
                     {(t) => <span class="mono-tag">{t}</span>}
                   </For>
                 </div>
+
+                <Show when={project.links?.blog || project.links?.video}>
+                  <div style={{ display: "flex", gap: "0.5rem", "flex-wrap": "wrap", "margin-top": "0.75rem", "padding-top": "0.75rem", "border-top": "1px solid #e2e8f0" }}>
+                    <Show when={project.links?.blog}>
+                      <a
+                        href={project.links?.blog}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn btn-secondary"
+                        style={{ padding: "0.35rem 0.75rem", "font-size": "0.75rem", display: "inline-flex", "align-items": "center", gap: "0.35rem" }}
+                      >
+                        AWS TLS 1.3 Blog <ExternalLink size={12} />
+                      </a>
+                    </Show>
+                    <Show when={project.links?.video}>
+                      <a
+                        href={project.links?.video}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn btn-secondary"
+                        style={{ padding: "0.35rem 0.75rem", "font-size": "0.75rem", display: "inline-flex", "align-items": "center", gap: "0.35rem" }}
+                      >
+                        OpenSearchCon Presentation <ExternalLink size={12} />
+                      </a>
+                    </Show>
+                  </div>
+                </Show>
               </div>
             )}
           </For>
@@ -388,12 +456,15 @@ export function TypographyStudioWorkspace() {
             Connect
           </h2>
           <p style={{ color: "#475569", "line-height": "1.7", "margin-bottom": "2rem", "font-size": "1.05rem" }}>
-            Connect with me on LinkedIn to chat, collaborate, or share ideas.
+            Feel free to reach out via email or connect on LinkedIn to chat, collaborate, or discuss technical leadership opportunities.
           </p>
 
           <div style={{ display: "flex", "flex-wrap": "wrap", gap: "1.25rem", "justify-content": "center", "margin-bottom": "1.5rem" }}>
-            <a href={resumeData.linkedin} target="_blank" rel="noopener noreferrer" class="btn btn-primary" style={{ padding: "0.85rem 2rem", "font-size": "1rem" }}>
-              LinkedIn Profile
+            <a href={`mailto:${resumeData.email}`} class="btn btn-primary" style={{ padding: "0.85rem 2rem", "font-size": "1rem", display: "inline-flex", "align-items": "center", gap: "0.5rem" }}>
+              <Mail size={18} /> {resumeData.email}
+            </a>
+            <a href={resumeData.linkedin} target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style={{ padding: "0.85rem 2rem", "font-size": "1rem", display: "inline-flex", "align-items": "center", gap: "0.5rem" }}>
+              <Linkedin size={18} /> LinkedIn Profile
             </a>
           </div>
 

@@ -63,6 +63,21 @@ html {
   font-size: 16px;
 }
 
+/* Smooth Scroll Margin Offsets for Fixed Sticky Header */
+.swiss-panel,
+.paper-cell,
+#overview,
+#terminal,
+#odyssey,
+#about,
+#experience,
+#skills,
+#education,
+#projects,
+#contact {
+  scroll-margin-top: 5.5rem;
+}
+
 body {
   font-family: var(--font-body);
   background-color: var(--bg-primary);

@@ -18,21 +18,44 @@ export const Header = (props: HeaderProps) => {
         </a>
 
         <nav class="nav">
-          <a href="#overview" class="nav-link" style={{ "font-family": "monospace" }}>
-            [01] PROFILE
-          </a>
-          <a href="#terminal" class="nav-link" style={{ "font-family": "monospace" }}>
-            [02] CLI CONSOLE
-          </a>
-          <a href="#odyssey" class="nav-link" style={{ "font-family": "monospace" }}>
-            [03] CAREER TIMELINE
-          </a>
-          <a href="#projects" class="nav-link" style={{ "font-family": "monospace" }}>
-            [04] PROJECTS
-          </a>
-          <a href="#contact" class="nav-link" style={{ "font-family": "monospace" }}>
-            [05] CONNECT
-          </a>
+          <Show
+            when={props.viewMode === "paper"}
+            fallback={
+              <>
+                <a href="#overview" class="nav-link" style={{ "font-family": "monospace" }}>
+                  [01] PROFILE
+                </a>
+                <a href="#terminal" class="nav-link" style={{ "font-family": "monospace" }}>
+                  [02] CLI CONSOLE
+                </a>
+                <a href="#odyssey" class="nav-link" style={{ "font-family": "monospace" }}>
+                  [03] CAREER TIMELINE
+                </a>
+                <a href="#projects" class="nav-link" style={{ "font-family": "monospace" }}>
+                  [04] PROJECTS
+                </a>
+                <a href="#contact" class="nav-link" style={{ "font-family": "monospace" }}>
+                  [05] CONNECT
+                </a>
+              </>
+            }
+          >
+            <a href="#about" class="nav-link" style={{ "font-family": "monospace" }}>
+              [01] PROFILE
+            </a>
+            <a href="#experience" class="nav-link" style={{ "font-family": "monospace" }}>
+              [02] EXPERIENCE
+            </a>
+            <a href="#skills" class="nav-link" style={{ "font-family": "monospace" }}>
+              [03] SKILLS
+            </a>
+            <a href="#projects" class="nav-link" style={{ "font-family": "monospace" }}>
+              [04] PROJECTS
+            </a>
+            <a href="#contact" class="nav-link" style={{ "font-family": "monospace" }}>
+              [05] CONNECT
+            </a>
+          </Show>
         </nav>
 
         <div class="controls-group" style={{ display: "flex", "align-items": "center", gap: "0.75rem" }}>
@@ -92,21 +115,44 @@ export const Header = (props: HeaderProps) => {
       <Show when={isOpen()}>
         <div class="mobile-menu-overlay" data-testid="mobile-menu-overlay">
           <nav class="mobile-nav">
-            <a href="#overview" class="mobile-nav-link" onClick={() => setIsOpen(false)}>
-              [01] PROFILE
-            </a>
-            <a href="#terminal" class="mobile-nav-link" onClick={() => setIsOpen(false)}>
-              [02] CLI CONSOLE
-            </a>
-            <a href="#odyssey" class="mobile-nav-link" onClick={() => setIsOpen(false)}>
-              [03] CAREER TIMELINE
-            </a>
-            <a href="#projects" class="mobile-nav-link" onClick={() => setIsOpen(false)}>
-              [04] PROJECTS
-            </a>
-            <a href="#contact" class="mobile-nav-link" onClick={() => setIsOpen(false)}>
-              [05] CONNECT
-            </a>
+            <Show
+              when={props.viewMode === "paper"}
+              fallback={
+                <>
+                  <a href="#overview" class="mobile-nav-link" onClick={() => setIsOpen(false)}>
+                    [01] PROFILE
+                  </a>
+                  <a href="#terminal" class="mobile-nav-link" onClick={() => setIsOpen(false)}>
+                    [02] CLI CONSOLE
+                  </a>
+                  <a href="#odyssey" class="mobile-nav-link" onClick={() => setIsOpen(false)}>
+                    [03] CAREER TIMELINE
+                  </a>
+                  <a href="#projects" class="mobile-nav-link" onClick={() => setIsOpen(false)}>
+                    [04] PROJECTS
+                  </a>
+                  <a href="#contact" class="mobile-nav-link" onClick={() => setIsOpen(false)}>
+                    [05] CONNECT
+                  </a>
+                </>
+              }
+            >
+              <a href="#about" class="mobile-nav-link" onClick={() => setIsOpen(false)}>
+                [01] PROFILE
+              </a>
+              <a href="#experience" class="mobile-nav-link" onClick={() => setIsOpen(false)}>
+                [02] EXPERIENCE
+              </a>
+              <a href="#skills" class="mobile-nav-link" onClick={() => setIsOpen(false)}>
+                [03] SKILLS
+              </a>
+              <a href="#projects" class="mobile-nav-link" onClick={() => setIsOpen(false)}>
+                [04] PROJECTS
+              </a>
+              <a href="#contact" class="mobile-nav-link" onClick={() => setIsOpen(false)}>
+                [05] CONNECT
+              </a>
+            </Show>
             
             {props.setViewMode && (
               <div class="mobile-view-switcher">

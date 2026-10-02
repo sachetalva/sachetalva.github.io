@@ -97,4 +97,20 @@ describe("Minimalist Typography Tech App Unit Tests", () => {
     render(() => <App />);
     expect(document.documentElement.getAttribute("data-theme")).toBe("light");
   });
+
+  test("displays email address and published work links", () => {
+    render(() => <App />);
+    expect(screen.getAllByText("sachetalva@gmail.com").length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/TLS 1\.3/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/OpenSearchCon/i).length).toBeGreaterThan(0);
+  });
+
+  test("displays adapted top menu section titles when in classic resume mode", () => {
+    render(() => <Header viewMode="paper" setViewMode={() => {}} />);
+    expect(screen.getByText("[01] PROFILE")).toBeDefined();
+    expect(screen.getByText("[02] EXPERIENCE")).toBeDefined();
+    expect(screen.getByText("[03] SKILLS")).toBeDefined();
+    expect(screen.getByText("[04] PROJECTS")).toBeDefined();
+    expect(screen.getByText("[05] CONNECT")).toBeDefined();
+  });
 });

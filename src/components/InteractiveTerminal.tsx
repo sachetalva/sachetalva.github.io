@@ -21,12 +21,14 @@ export function InteractiveTerminal() {
   cat bio.txt     -> View short professional bio
   cat skills.json -> Show key tech and leadership skills
   cat achievements.log -> View career highlights & impact
+  cat publications.log -> View published AWS blog post & OpenSearchCon talk
   cat contact.txt -> Show contact info & LinkedIn
   sh easter_egg.sh -> Execute the secret shell script
   clear           -> Clear terminal console`;
     } else if (cmd === "whoami") {
       out = `USER: Sachet Alva
 ROLE: Software Development Manager
+EMAIL: ${resumeData.email}
 EXPERIENCE: 16+ Years (SDE / SDM)
 LOCATION: Bengaluru, Karnataka, India
 LINKEDIN: ${resumeData.linkedin}`;
@@ -36,6 +38,7 @@ drwxr-xr-x  sachet  staff  4096 Aug 02 15:20 ..
 -rw-r--r--  sachet  staff  1024 Aug 02 15:20 bio.txt
 -rw-r--r--  sachet  staff  2048 Aug 02 15:20 skills.json
 -rw-r--r--  sachet  staff  3072 Aug 02 15:20 achievements.log
+-rw-r--r--  sachet  staff  1536 Aug 02 15:20 publications.log
 -rw-r--r--  sachet  staff   512 Aug 02 15:20 contact.txt
 -rwxr-xr-x  sachet  staff   256 Aug 02 15:20 easter_egg.sh`;
     } else if (cmd === "uname -a") {
@@ -82,8 +85,18 @@ NOKIA & WIPRO ACHIEVEMENTS:
 - Designed and developed AirScale Wi-Fi authentication/session modules using FreeRADIUS.
 - Integrated GTest framework in legacy C++ codebase, winning Nokia's 'Recognize Excellent Contribution' award.
 - Earned Wipro 'Spot Award' from Alcatel Lucent for resolving critical telecommunication code blockers.`;
+    } else if (cmd === "cat publications.log" || cmd === "cat publications" || cmd === "cat talks.txt" || cmd === "cat talks") {
+      out = `PUBLICATIONS & PRESENTATIONS:
+1. AWS Big Data Blog:
+   "Enhance security and performance with TLS 1.3 and Perfect Forward Secrecy on Amazon OpenSearch Service"
+   URL: https://aws.amazon.com/blogs/big-data/enhance-security-and-performance-with-tls-1-3-and-perfect-forward-secrecy-on-amazon-opensearch-service/
+
+2. OpenSearchCon Amsterdam Keynote & Presentation:
+   Presentation on OpenSearch Security & Platform Innovations
+   URL: https://www.youtube.com/watch?v=p2P__hsZMCo&t=13s`;
     } else if (cmd === "cat contact.txt" || cmd === "cat contact") {
       out = `CONTACT DETAILS:
+- Email:    ${resumeData.email}
 - LinkedIn: ${resumeData.linkedin}
 - Website:  https://sachetalva.github.io
 - Location: Bengaluru, Karnataka, India`;
@@ -176,6 +189,13 @@ NOKIA & WIPRO ACHIEVEMENTS:
             style={{ "font-size": "0.7rem", padding: "2px 8px" }}
           >
             achievements.log
+          </button>
+          <button
+            class="terminal-chip"
+            onClick={() => executeCommand("cat publications.log")}
+            style={{ "font-size": "0.7rem", padding: "2px 8px", background: "rgba(2, 132, 199, 0.2)", color: "#38bdf8", border: "1px solid rgba(2, 132, 199, 0.4)" }}
+          >
+            publications.log
           </button>
           <button
             class="terminal-chip"

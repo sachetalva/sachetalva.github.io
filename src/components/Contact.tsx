@@ -1,5 +1,5 @@
 import { Show } from "solid-js";
-import { Linkedin } from "./Icons";
+import { Linkedin, Mail } from "./Icons";
 import { resumeData } from "../data/resumeData";
 
 interface ContactProps {
@@ -20,6 +20,18 @@ export const Contact = (props: ContactProps) => {
           <div class="contact-content-minimal">
             <div class="contact-item">
               <div class="contact-icon">
+                <Mail size={16} />
+              </div>
+              <div>
+                <div class="contact-label">Email</div>
+                <a href={`mailto:${resumeData.email}`} class="contact-value" id="contact-email">
+                  {resumeData.email}
+                </a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
                 <Linkedin size={16} />
               </div>
               <div>
@@ -38,6 +50,18 @@ export const Contact = (props: ContactProps) => {
         <h2 class="cell-title">Connect</h2>
         
         <div class="contact-content-minimal">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <Mail size={16} />
+            </div>
+            <div>
+              <div class="contact-label">Email</div>
+              <a href={`mailto:${resumeData.email}`} class="contact-value" id="contact-email">
+                {resumeData.email}
+              </a>
+            </div>
+          </div>
+
           <div class="contact-item">
             <div class="contact-icon">
               <Linkedin size={16} />
